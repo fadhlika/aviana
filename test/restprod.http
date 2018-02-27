@@ -1,0 +1,37 @@
+GET http://aviana.fadhlika.com/
+###
+GET http://aviana.fadhlika.com/device
+###
+GET http://aviana.fadhlika.com/device/ba8p0nfeq8417oihdvvg
+###
+POST http://aviana.fadhlika.com/device
+Content-Type: application/json
+
+{
+    "name" : "pawana",
+    "type" : "weather-station"
+}
+###
+GET http://aviana.fadhlika.com/data
+###
+GET http://aviana.fadhlika.com/data/weather-station
+###
+GET http://aviana.fadhlika.com/data/solar-simulator
+###
+POST http://aviana.fadhlika.com/data?id=ba8p0nfeq8417oihdvvg
+
+{
+    "date": "2018-02-26T17:50:42",
+    "voltage": "3284",
+    "rainfall": "11",
+    "direction": "N",
+    "speed": "0"
+}
+###
+POST http://aviana.fadhlika.com/data?id=ba8p11feq8417oihe010
+
+{
+    "date": "2018-02-26T17:50:42",
+    "voltage" : 12,
+    "current" : 1.3
+}
