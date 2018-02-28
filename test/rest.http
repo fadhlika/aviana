@@ -9,7 +9,7 @@ Content-Type: application/json
 
 {
     "name" : "pawana",
-    "type" : "weather-station"
+    "type" : "solar-simulator"
 }
 ###
 GET http://localhost:8000/data
@@ -18,7 +18,7 @@ GET http://localhost:8000/data/weather-station
 ###
 GET http://localhost:8000/data/solar-simulator
 ###
-POST http://localhost:8000/data?id=ba8p0nfeq8417oihdvvg
+POST http://localhost:8000/data?id=baaeacneq8433aevffc0
 
 {
     "date": "2018-02-26T17:50:42",
