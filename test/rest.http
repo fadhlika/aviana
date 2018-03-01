@@ -21,11 +21,11 @@ GET http://localhost:8000/data/solar-simulator
 POST http://localhost:8000/data?id=baaeacneq8433aevffc0
 
 {
-    "date": "2018-02-26T17:50:42",
-    "voltage": "3284",
-    "rainfall": "11",
+    "date": "2018-02-26T17:50:42+07:00",
+    "voltage": 3284,
+    "rainfall": 11,
     "direction": "N",
-    "speed": "0"
+    "speed": 0
 }
 ###
 POST http://localhost:8000/data?id=ba8p11feq8417oihe010
