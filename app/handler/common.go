@@ -17,7 +17,7 @@ import (
 func RespondJson(doc interface{}, status int, w http.ResponseWriter, r *http.Request) {
 	res, err := json.Marshal(doc)
 	if err != nil {
-		log.Println(err)
+		log.Println("Respond ", err)
 	}
 
 	w.Header().Set("Content-Type", "application/json")
@@ -37,26 +37,28 @@ func SendWs(cfg *config.Config, data interface{}) {
 
 func InsertDocument(col *mgo.Collection, data []byte, doc *bson.M) bson.M {
 
-	err := json.Unmarshal(data, &doc)
+	err := json.Unmarshal(data, doc)
 	if err != nil {
-		log.Println(err)
+		log.Println("Unmarshal ", err)
 	}
 
-	date := (*doc)["date"].(string)
-	(*doc)["date"], err = time.Parse(time.RFC3339, date)
-	if err != nil {
-		log.Println(err)
+	if col.Name == "data" {
+		date := (*doc)["date"].(string)
+		(*doc)["date"], err = time.Parse(time.RFC3339, date)
+		if err != nil {
+			log.Println("Convert date ", err)
+		}
 	}
 
 	err = col.Insert(doc)
 	if err != nil {
-		log.Println(err)
+		log.Println("Insert document ", err)
 	}
 
 	var result bson.M
 	err = col.Find(doc).One(&result)
 	if err != nil {
-		log.Println(err)
+		log.Println("Find ", err)
 	}
 
 	return result

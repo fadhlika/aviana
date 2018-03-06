@@ -1,34 +1,32 @@
 GET http://localhost:8000/
 ###
-GET http://localhost:8000/device
+GET http://localhost:8000/api/device
 ###
-GET http://localhost:8000/device/ba8p0nfeq8417oihdvvg
+GET http://localhost:8000/api/device/baefhgneq840jrvpdobg
 ###
-POST http://localhost:8000/device
+POST http://localhost:8000/api/device
 Content-Type: application/json
 
 {
-    "name" : "pawana",
+    "name" : "aviana",
     "type" : "solar-simulator"
 }
 ###
-GET http://localhost:8000/data
+GET http://localhost:8000/api/data
 ###
-GET http://localhost:8000/data/weather-station
+GET http://localhost:8000/api/data/baefhgneq840jrvpdobg
 ###
-GET http://localhost:8000/data/solar-simulator
-###
-POST http://localhost:8000/data?id=baaeacneq8433aevffc0
+POST http://localhost:8000/api/data?id=baefhgneq840jrvpdobg
 
 {
-    "date": "2018-02-26T17:50:42+07:00",
+    "date": "2018-02-26T19:50:42+07:00",
     "voltage": 3284,
     "rainfall": 11,
     "direction": "N",
     "speed": 0
 }
 ###
-POST http://localhost:8000/data?id=ba8p11feq8417oihe010
+POST http://localhost:8000/api/data?id=ba8p11feq8417oihe010
 
 {
     "date": "2018-02-26T17:50:42",

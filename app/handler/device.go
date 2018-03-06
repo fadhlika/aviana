@@ -17,7 +17,7 @@ import (
 func CreateDevice(cfg *config.Config, DB *mgo.Database, w http.ResponseWriter, r *http.Request) {
 	b, err := ioutil.ReadAll(r.Body)
 	if err != nil {
-		log.Panicln(err)
+		log.Panicln("Read body ", err)
 	}
 	defer r.Body.Close()
 

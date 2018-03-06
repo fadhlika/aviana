@@ -54,10 +54,10 @@ func GetAllData(DB *mgo.Database, w http.ResponseWriter, r *http.Request) {
 func GetData(DB *mgo.Database, w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
 
-	devType := vars["type"]
+	deviceID := vars["id"]
 
 	var result []bson.M
-	DB.C("data").Find(bson.M{"type": devType}).All(&result)
+	DB.C("data").Find(bson.M{"device_id": deviceID}).All(&result)
 
 	RespondJson(result, 200, w, r)
 }
