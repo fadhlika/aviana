@@ -13,7 +13,7 @@ import (
 	"github.com/fadhlika/aviana/app/config"
 	"github.com/fadhlika/aviana/app/handler"
 
-	"github.com/gorilla/handlers"
+	"github.com/rs/cors"
 	"github.com/gorilla/mux"
 	"gopkg.in/mgo.v2"
 )
@@ -190,13 +190,9 @@ func (a *App) Run() {
 	log.Printf("Running on http://%s:%d", a.AppCfg.URL, a.AppCfg.Port)
 	go handler.HandleMessage(a.Clients)
 
-	headersOk := handlers.AllowedHeaders([]string{"X-Requested-With", "Content-Type"})
-	originsOk := handlers.AllowedOrigins([]string{"*"})
-	methodsOk := handlers.AllowedMethods([]string{"GET", "HEAD", "POST", "PUT", "OPTIONS"})
-
 	err := http.ListenAndServe(
 		fmt.Sprintf("%s:%d", a.AppCfg.URL, a.AppCfg.Port),
-		handlers.CORS(headersOk, originsOk, methodsOk)(a.Router),
+		cors.Default().Handler(a.Router),
 	)
 	if err != nil {
 		log.Println("HTTP ", err)
