@@ -170,20 +170,19 @@ func (a *App) GetDB(session *mgo.Session) *mgo.Database {
 
 //SetupRouter setup router
 func (a *App) SetupRouter() {
-	a.Router.HandleFunc("/api/device", a.CreateDevice).Methods("POST")
-	a.Router.HandleFunc("/api/device", a.GetAllDevice).Methods("GET")
-	a.Router.HandleFunc("/api/device/{id}", a.GetDevice).Methods("GET")
-	a.Router.HandleFunc("/api/device", a.UpdateDevice).Methods("PUT")
-	a.Router.HandleFunc("/api/device", a.DeleteDevice).Methods("DELETE")
+	a.Router.HandleFunc("/device", a.CreateDevice).Methods("POST")
+	a.Router.HandleFunc("/device", a.GetAllDevice).Methods("GET")
+	a.Router.HandleFunc("/device/{id}", a.GetDevice).Methods("GET")
+	a.Router.HandleFunc("/device", a.UpdateDevice).Methods("PUT")
+	a.Router.HandleFunc("/device", a.DeleteDevice).Methods("DELETE")
 
-	a.Router.HandleFunc("/api/data", a.CreateData).Methods("POST")
-	a.Router.HandleFunc("/api/data", a.GetAllData).Methods("GET")
-	a.Router.HandleFunc("/api/data/{id}", a.GetData).Methods("GET")
-	a.Router.HandleFunc("/api/data", a.UpdateData).Methods("PUT")
-	a.Router.HandleFunc("/api/data", a.DeleteData).Methods("DELETE")
+	a.Router.HandleFunc("/data", a.CreateData).Methods("POST")
+	a.Router.HandleFunc("/data", a.GetAllData).Methods("GET")
+	a.Router.HandleFunc("/data/{id}", a.GetData).Methods("GET")
+	a.Router.HandleFunc("/data", a.UpdateData).Methods("PUT")
+	a.Router.HandleFunc("/data", a.DeleteData).Methods("DELETE")
 
 	a.Router.HandleFunc("/websocket", a.Echo)
-	a.Router.PathPrefix("/").Handler(http.FileServer(http.Dir("./public/")))
 }
 
 //Run application
