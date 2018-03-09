@@ -4,7 +4,7 @@ GET http://localhost:8000/api/device
 ###
 GET http://localhost:8000/api/device/baefhgneq840jrvpdobg
 ###
-POST http://localhost:8000/api/device
+POST http://localhost:8000/device
 Content-Type: application/json
 
 {
@@ -12,18 +12,18 @@ Content-Type: application/json
     "type" : "solar-simulator"
 }
 ###
-GET http://localhost:8000/api/data
+GET http://localhost:8000/data
 ###
-GET http://localhost:8000/api/data/baefhgneq840jrvpdobg
+GET http://localhost:8000/data/bagavtveq841km2kj600/100
 ###
-POST http://localhost:8000/api/data?id=baefhgneq840jrvpdobg
+POST http://localhost:8000/data?id=bagavtveq841km2kj600
 
 {
-    "date": "2018-02-26T19:50:42+07:00",
-    "voltage": 3284,
+    "date": "2018-02-26T19:53:42+07:00",
+    "voltage": 3204,
     "rainfall": 11,
     "direction": "N",
-    "speed": 0
+    "speed": 1
 }
 ###
 POST http://localhost:8000/api/data?id=ba8p11feq8417oihe010

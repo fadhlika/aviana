@@ -2,7 +2,7 @@ GET http://aviana.fadhlika.com/
 ###
 GET http://aviana.fadhlika.com/device
 ###
-GET http://aviana.fadhlika.com/device/ba8p0nfeq8417oihdvvg
+GET http://api.aviana.fadhlika.com/device/ba8p0nfeq8417oihdvvg
 ###
 POST http://aviana.fadhlika.com/device
 Content-Type: application/json
@@ -12,21 +12,23 @@ Content-Type: application/json
     "type" : "weather-station"
 }
 ###
-GET http://aviana.fadhlika.com/data
+GET http://api.aviana.fadhlika.com/data
 ###
 GET http://aviana.fadhlika.com/data/weather-station
 ###
 GET http://aviana.fadhlika.com/data/solar-simulator
 ###
-POST http://aviana.fadhlika.com/data?id=ba8p0nfeq8417oihdvvg
+POST http://api.aviana.fadhlika.com/data?id=bagavtveq841km2kj600
 
 {
-    "date": "2018-02-26T17:50:42",
-    "voltage": "3284",
-    "rainfall": "11",
-    "direction": "N",
-    "speed": "0"
+  "date": "2018-03-08T17:53:00",
+  "dir": "W",
+  "voltage": 3223,
+  "speed": 0,
+  "rainfall": 0,
+  "rssi": -72
 }
+
 ###
 POST http://aviana.fadhlika.com/data?id=ba8p11feq8417oihe010
 

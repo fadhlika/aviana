@@ -4,6 +4,7 @@ import (
 	"io/ioutil"
 	"log"
 	"net/http"
+	"strconv"
 
 	"github.com/fadhlika/aviana/app/config"
 	"github.com/gorilla/mux"
@@ -55,9 +56,13 @@ func GetData(DB *mgo.Database, w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
 
 	deviceID := vars["id"]
+	limit, err := strconv.Atoi(vars["limit"])
+	if err != nil {
+		log.Println(err)
+	}
 
 	var result []bson.M
-	DB.C("data").Find(bson.M{"device_id": deviceID}).All(&result)
+	DB.C("data").Find(bson.M{"device_id": deviceID}).Limit(limit).All(&result)
 
 	RespondJson(result, 200, w, r)
 }

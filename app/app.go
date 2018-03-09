@@ -178,7 +178,7 @@ func (a *App) SetupRouter() {
 
 	a.Router.HandleFunc("/data", a.CreateData).Methods("POST")
 	a.Router.HandleFunc("/data", a.GetAllData).Methods("GET")
-	a.Router.HandleFunc("/data/{id}", a.GetData).Methods("GET")
+	a.Router.HandleFunc("/data/{id}/{limit}", a.GetData).Methods("GET")
 	a.Router.HandleFunc("/data", a.UpdateData).Methods("PUT")
 	a.Router.HandleFunc("/data", a.DeleteData).Methods("DELETE")
 
