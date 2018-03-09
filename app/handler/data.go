@@ -46,7 +46,7 @@ func CreateData(cfg *config.Config, DB *mgo.Database, w http.ResponseWriter, r *
 //GetAllData handler
 func GetAllData(DB *mgo.Database, w http.ResponseWriter, r *http.Request) {
 	var result []bson.M
-	DB.C("data").Find(nil).All(&result)
+	DB.C("data").Find(nil).Sort("-date").All(&result)
 
 	RespondJson(result, 200, w, r)
 }
@@ -62,7 +62,7 @@ func GetData(DB *mgo.Database, w http.ResponseWriter, r *http.Request) {
 	}
 
 	var result []bson.M
-	DB.C("data").Find(bson.M{"device_id": deviceID}).Limit(limit).All(&result)
+	DB.C("data").Find(bson.M{"device_id": deviceID}).Sort("-date").Limit(limit).All(&result)
 
 	RespondJson(result, 200, w, r)
 }
