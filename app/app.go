@@ -13,8 +13,8 @@ import (
 	"github.com/fadhlika/aviana/app/config"
 	"github.com/fadhlika/aviana/app/handler"
 
-	"github.com/rs/cors"
 	"github.com/gorilla/mux"
+	"github.com/rs/cors"
 	"gopkg.in/mgo.v2"
 )
 
@@ -61,7 +61,6 @@ func (a *App) Init() {
 		sync.Mutex{},
 		make(chan interface{}),
 	}
-
 }
 
 //CreateDevice register new device wrapper
@@ -154,6 +153,16 @@ func (a *App) DeleteData(w http.ResponseWriter, r *http.Request) {
 	handler.DeleteData(a.AppCfg, db, w, r)
 }
 
+//DownloadAllData download all data wrapper
+func (a *App) DownloadData(w http.ResponseWriter, r *http.Request) {
+	session := a.GetSession()
+	defer session.Close()
+
+	db := a.GetDB(session)
+	handler.DownloadData(a.AppCfg, db, w, r)
+}
+
+//Echo Handle websocket
 func (a *App) Echo(w http.ResponseWriter, r *http.Request) {
 	handler.HandleConnection(a.Upgrader, a.Clients, w, r)
 }
@@ -181,6 +190,7 @@ func (a *App) SetupRouter() {
 	a.Router.HandleFunc("/data/{id}/{limit}", a.GetData).Methods("GET")
 	a.Router.HandleFunc("/data", a.UpdateData).Methods("PUT")
 	a.Router.HandleFunc("/data", a.DeleteData).Methods("DELETE")
+	a.Router.HandleFunc("/download/data/{id}", a.DownloadData).Methods("GET")
 
 	a.Router.HandleFunc("/websocket", a.Echo)
 }

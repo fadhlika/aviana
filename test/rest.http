@@ -16,7 +16,7 @@ GET http://localhost:8000/data
 ###
 GET http://localhost:8000/data/bagavtveq841km2kj600/100
 ###
-POST http://localhost:8000/data?id=bagavtveq841km2kj600
+POST http://localhost:8000/data?id=baaeum3mke00e9u4pdtg
 
 {
     "date": "2018-02-26T19:53:42+07:00",

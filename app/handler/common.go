@@ -7,6 +7,7 @@ import (
 	"net/http"
 	"time"
 
+	"github.com/360EntSecGroup-Skylar/excelize"
 	"github.com/fadhlika/aviana/app/config"
 	"github.com/gorilla/websocket"
 
@@ -23,6 +24,14 @@ func RespondJson(doc interface{}, status int, w http.ResponseWriter, r *http.Req
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(status)
 	w.Write(res)
+}
+
+func RespondExcel(xlsx *excelize.File, deviceID string, status int, w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Content-Disposition", fmt.Sprintf("attachment; filename=%s.xlsx", deviceID))
+	w.Header().Set("Content-Type", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")
+
+	w.WriteHeader(status)
+	xlsx.Write(w)
 }
 
 func SendWs(cfg *config.Config, data interface{}) {
