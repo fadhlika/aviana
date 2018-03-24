@@ -106,13 +106,14 @@ func DownloadData(cfg *config.Config, DB *mgo.Database, w http.ResponseWriter, r
 		xlsx.SetCellValue("Sheet1", cell, field)
 	}
 
+	loc, _ := time.LoadLocation("Asia/Jakarta")
 	for i, doc := range result {
 		for j, field := range keys {
 			cell := fmt.Sprintf("%c%d", 65+j, i+2)
 			xlsx.SetCellValue("Sheet1", cell, doc[field])
 			if field == "date" {
 				date, _ := time.Parse(time.RFC3339, doc[field].(string))
-				xlsx.SetCellValue("Sheet1", cell, date)
+				xlsx.SetCellValue("Sheet1", cell, date.In(loc))
 			}
 		}
 	}
