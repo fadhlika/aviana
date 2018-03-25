@@ -4,6 +4,7 @@ import (
 	"log"
 	"net/http"
 	"sync"
+	"time"
 
 	"github.com/gorilla/websocket"
 )
@@ -21,6 +22,8 @@ func HandleConnection(upgrader *websocket.Upgrader, clients *Clients, w http.Res
 	}
 	defer c.Close()
 
+	c.SetReadDeadline(time.Time{})
+	c.SetWriteDeadline(time.Time{})
 	clients.Conn[c] = true
 	for {
 		var res interface{}
