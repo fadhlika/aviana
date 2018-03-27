@@ -14,7 +14,7 @@ Content-Type: application/json
 ###
 GET http://localhost:8000/data
 ###
-GET http://localhost:8000/data/bagavtveq841km2kj600/100
+GET http://localhost:8000/data/baaeum3mke00e9u4pdtg/100
 ###
 POST http://localhost:8000/data?id=baaeum3mke00e9u4pdtg
 

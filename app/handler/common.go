@@ -52,11 +52,9 @@ func InsertDocument(col *mgo.Collection, data []byte, doc *bson.M) bson.M {
 	}
 
 	if col.Name == "data" {
-		date := (*doc)["date"].(string)
-		(*doc)["date"], err = time.Parse(time.RFC3339, date)
-		if err != nil {
-			log.Println("Convert date ", err)
-		}
+		jakarta, _ := time.LoadLocation("Asia/Jakarta")
+		date := time.Now().In(jakarta)
+		(*doc)["date"] = date
 	}
 
 	err = col.Insert(doc)
